@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Nunito', sans-serif;
+}
+
+body {
+    background-color: #F7F4F0; /* Light background */
+    color: #314D6D; /* Main color */
+    font-size: 16px;
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+/* Header */
+header {
+    background-color: #314D6D; /* Main color */
+    color: #F7F4F0; /* Light background */
+    padding: 40px 20px; /* Adjust top-bottom padding for thickness */
+    text-align: center;
+    font-size: 1.5em; /* Adjust the text size */
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    height: 100px; /* Adjust the height of the header */
+}
+
+header .logo {
+    font-size: 1em;
+    font-weight: bold;
+}
+
+/* Sidebar Navigation Bar */
+.navbar {
+    height: 100vh;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #F7F4F0; /* Main color */
+    padding: 20px 20px 20px 36px;
+    color: #314D6D; /* Light background */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-top: 100px; /* Adjust for the fixed header */
+    box-shadow: 3px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #314D6D;
+    margin: 20px 0;
+    font-size: 1.3em;
+    transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+    color: #FF9248; /* Accent color */
+}
+
+.navbar button {
+    background-color: #FF9248;
+    color: #314D6D;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+.navbar button:hover {
+    background-color: #FFD87E; /* Light accent color */
+}
+
+.layout {
+    height: 100vh;
+}
+
+        .main-content {
+            margin-left: 250px;
+            margin-top: 100px;
+            padding: 20px;
+            flex: 1;
+            background: #FFFFFF;
+            border-radius: 10px;
+            display: flex;
+        }
+
+        .chat-section {
+            flex: 3;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chat-history-bar {
+            flex: 1;
+            max-width: 300px;
+            border-left: 1px solid #ccc;
+            padding: 10px;
+            overflow-y: auto;
+            background: #F7F4F0;
+        }
+
+        .chat-history-item {
+            padding: 10px;
+            border-radius: 5px;
+            background: #FFD87E;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .chat-history-item:hover {
+            background: #FF9248;
+        }
+
+        .page-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .page-title h3 {
+            margin: 0;
+            font-size: 1.5em;
+        }
+
+        .btn {
+            background: #FF9248;
+            color: white;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+        }
+
+        .btn:hover {
+            background: #FFD87E;
+        }
+
+        .chat-area {
+            width: 100%;
+            max-height: 300px;
+            padding: 180px;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            border: 1px solid #eaeaea;
+            border-radius: 10px;
+            background: #f9f9f9;
+            margin-bottom: 20px;
+        }
+
+        .message {
+            padding: 10px;
+            border-radius: 20px;
+            max-width: 70%;
+            margin: 5px 0;
+            line-height: 1.4;
+            word-wrap: break-word;
+        }
+
+        .sent {
+            align-self: flex-end;
+            background-color: #FF9248;
+            color: white;
+            text-align: right;        /* Align text inside the message bubble to the right */
+            float: right;             /* Align the entire message bubble to the right */
+            margin-right: -160px;       /* Add some spacing from the right edge */
+        }
+
+        .received {
+            align-self: flex-start;
+            background-color: #B0C4D4;
+            color: black;
+            text-align: left;        /* Align text inside the message bubble to the right */
+            float: left;             /* Align the entire message bubble to the right */
+            margin-left: -160px;       /* Add some spacing from the right edge */
+        }
+
+        .input-area {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+        }
+
+        #messageInput {
+            flex-grow: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            margin-right: 10px;
+        }
+
+        #sendMessage {
+            background-color: #FF9248;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        #sendMessage:hover {
+            background: #FFD87E;
+        }
+
+        #videoCallModal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+        }
+
+        #videoCallModal .modal-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 500px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #videoCallModal button {
+            margin-top: 10px;
+            background-color: #FF9248;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .video-container {
+            position: relative;
+            margin-top: 20px;
+        }
+
+        video {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .controls {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .control-btn {
+            background-color: #FF9248;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .control-btn:hover {
+            background: #FFD87E;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">Health Dashboard</div>
+    </header>
+
+    <div class="navbar">
+        <h2>HealMount</h2>
+        <ul>
+            <li><a href="appointments.html">Book Appointment</a></li>
+            <li><a href="my_bookings.html">My Bookings</a></li>
+            <li><a href="profile.html">Profile</a></li>
+            <li><a href="search.html">Search Medical Services</a></li>
+            <li><a href="logout.html">Logout</a></li>
+            <li><a href="hotels.html">Hotels and Taxi</a></li>
+            <li><a href="reviews.html">Reviews and Ratings</a></li>
+          </ul>
+    </div>
+
+    <div class="main-content">
+        <div class="chat-section">
+            <div class="page-title">
+                <h3 id="doctorName">Chat with Doctor</h3>
+                <button id="startVideoCall" class="btn">Video Call</button>
+            </div>
+
+            <div class="chat-area" id="chatArea"></div>
+
+            <div class="input-area">
+                <input id="messageInput" type="text" placeholder="Type a message...">
+                <button id="sendMessage">Send</button>
+            </div>
+        </div>
+
+        <div class="chat-history-bar" id="chatHistoryBar">
+            <h4>Saved Chats</h4>
+        </div>
+    </div>
+
+    <div id="videoCallModal" class="modal">
+        <div class="modal-content">
+            <h2>Video Call in Progress</h2>
+            <div class="video-container">
+                <video id="localVideo" autoplay muted></video>
+                <video id="remoteVideo" autoplay></video>
+                <div class="controls">
+                    <button id="toggleCamera" class="control-btn">Turn Camera Off</button>
+                    <button id="toggleMute" class="control-btn">Mute</button>
+                    <button id="endVideoCall" class="control-btn">End Call</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const chatArea = document.getElementById('chatArea');
+        const messageInput = document.getElementById('messageInput');
+        const sendMessageButton = document.getElementById('sendMessage');
+        const doctorNameElement = document.getElementById('doctorName');
+        const chatHistoryBar = document.getElementById('chatHistoryBar');
+        const startVideoCallButton = document.getElementById('startVideoCall');
+        const videoCallModal = document.getElementById('videoCallModal');
+        const endVideoCallButton = document.getElementById('endVideoCall');
+        const localVideo = document.getElementById('localVideo');
+        const remoteVideo = document.getElementById('remoteVideo');
+        const toggleCameraButton = document.getElementById('toggleCamera');
+        const toggleMuteButton = document.getElementById('toggleMute');
+
+        let localStream;
+        let peerConnection;
+        let isCameraOn = true;
+        let isMuted = false;
+        
+        // Load saved chat history from localStorage
+        const loadChatHistory = () => {
+            const history = JSON.parse(localStorage.getItem('chatHistory')) || [];
+            chatHistoryBar.innerHTML = '<h4>Saved Chats</h4>';
+            history.forEach((chat, index) => {
+                const historyItem = document.createElement('div');
+                historyItem.className = 'chat-history-item';
+                historyItem.textContent = chat.name;
+                historyItem.onclick = () => {
+                    openChat(chat.name);
+                };
+                chatHistoryBar.appendChild(historyItem);
+            });
+        };
+
+        // Save a message to localStorage
+        const saveMessage = (name, type, text) => {
+            const chatKey = `chat-${name}`;
+            const chatMessages = JSON.parse(localStorage.getItem(chatKey)) || [];
+            chatMessages.push({ type, text });
+            localStorage.setItem(chatKey, JSON.stringify(chatMessages));
+
+            // Update chatHistory in localStorage
+            let chatHistory = JSON.parse(localStorage.getItem('chatHistory')) || [];
+            if (!chatHistory.find(chat => chat.name === name)) {
+                chatHistory.push({ name });
+                localStorage.setItem('chatHistory', JSON.stringify(chatHistory));
+            }
+        };
+       
+        
+        
+
+
+        sendMessageButton.addEventListener('click', () => {
+            const text = messageInput.value.trim();
+            if (!text) return;
+
+            const sentMessage = document.createElement('div');
+            sentMessage.className = 'message sent';
+            sentMessage.textContent = text;
+            chatArea.appendChild(sentMessage);
+
+            const autoReplyMessage = document.createElement('div');
+            autoReplyMessage.className = 'message received';
+            autoReplyMessage.textContent = "Doctor will reply shortly...";
+            setTimeout(() => {
+                chatArea.appendChild(autoReplyMessage);
+                chatArea.scrollTop = chatArea.scrollHeight;
+            }, 1000);
+
+            saveMessage(doctorNameElement.textContent, 'sent', text);
+            messageInput.value = '';
+            chatArea.scrollTop = chatArea.scrollHeight;
+        });
+
+        const startVideoCall = async () => {
+            try {
+                localStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
+                localVideo.srcObject = localStream;
+
+                videoCallModal.style.display = 'flex';
+                toggleMuteButton.addEventListener('click', () => {
+                    isMuted = !isMuted;
+                    localStream.getAudioTracks()[0].enabled = !isMuted;
+                    toggleMuteButton.textContent = isMuted ? 'Unmute' : 'Mute';
+                });
+
+                toggleCameraButton.addEventListener('click', () => {
+                    isCameraOn = !isCameraOn;
+                    localStream.getVideoTracks()[0].enabled = isCameraOn;
+                    toggleCameraButton.textContent = isCameraOn ? 'Turn Camera Off' : 'Turn Camera On';
+                });
+
+                endVideoCallButton.addEventListener('click', () => {
+                    localStream.getTracks().forEach(track => track.stop());
+                    videoCallModal.style.display = 'none';
+                });
+            } catch (err) {
+                alert('Error accessing camera or microphone: ' + err.message);
+            }
+        };
+
+        startVideoCallButton.addEventListener('click', startVideoCall);
+
+        // Load saved chat history when page loads
+        loadChatHistory();
+    </script>
+</body>
+</html>

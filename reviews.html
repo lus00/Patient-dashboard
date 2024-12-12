@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reviews and Ratings</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+     <!-- Header -->
+     <header class="header">
+        <div class="logo">Health Dashboard</div>
+        
+    </header>
+  <!-- Sidebar -->
+  <div class="navbar">
+    <h2>HealMount</h2>
+    <nav>
+      <ul>
+        <li><a href="my_bookings.html">My Bookings</a></li>
+        <li><a href="profile.html">Profile</a> <li>
+        <li><a href="search.html">Search Medical Services</a> <li>
+        <li><a href="appointments.html">Appointments</a></li>
+        <li><a href="logout.html">Logout</a></li>
+        <li><a href="reviews.html">Reviews and Ratings</a></li>
+        <li><a href="hotels.html">Hotels and Taxi</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <h1>Reviews and Ratings</h1>
+
+    <!-- Review Form -->
+    <form id="review-form">
+      <label for="doctor-select">Select Doctor:</label>
+    <br>
+      <select id="doctor-select" required>
+        <option value="" disabled selected>Choose a doctor</option>
+      </select>
+      <br>
+
+      <label for="review-text">Write your review:</label>
+      <textarea id="review-text" placeholder="Share your experience..." required></textarea>
+      <br>
+      <label>Rate the Doctor:</label>
+      <div id="star-rating"></div>
+
+      <button type="submit">Submit Review</button>
+    </form>
+
+    <h2>Existing Reviews</h2>
+    <div id="reviews-list"></div>
+  </div>
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2024 HealMount. All rights reserved.</p>
+</footer>
+
+  <script src="scripts.js"></script>
+</body>
+
+</html>
+

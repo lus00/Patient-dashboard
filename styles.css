@@ -1,0 +1,426 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Nunito', sans-serif;
+}
+
+body {
+    background-color: #F7F4F0; /* Light background */
+    color: #314D6D; /* Main color */
+    font-size: 16px;
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+/* Header */
+header {
+    background-color: #314D6D; /* Main color */
+    color: #F7F4F0; /* Light background */
+    padding: 40px 20px; /* Adjust top-bottom padding for thickness */
+    text-align: center;
+    font-size: 1.5em; /* Adjust the text size */
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    height: 100px; /* Adjust the height of the header */
+}
+
+header .logo {
+    font-size: 1em;
+    font-weight: bold;
+}
+
+/* Sidebar Navigation Bar */
+.navbar {
+    height: 100vh;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #F7F4F0; /* Main color */
+    padding: 20px 20px 20px 36px;
+    color: #314D6D; /* Light background */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-top: 100px; /* Adjust for the fixed header */
+    box-shadow: 3px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #314D6D;
+    margin: 20px 0;
+    font-size: 1.3em;
+    transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+    color: #FF9248; /* Accent color */
+}
+
+.navbar button {
+    background-color: #FF9248;
+    color: #314D6D;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+.navbar button:hover {
+    background-color: #FFD87E; /* Light accent color */
+}
+
+.layout {
+    height: 100vh;
+}
+
+/* Main Content Area */
+.main-content {
+    margin-left: 250px; /* Sidebar space */
+    margin-top: 100px; /* This creates the space between the header and main content */
+    padding: 20px; /* Reduced padding for a cleaner layout */
+    max-width: 1200px;
+    border-radius: 10px;
+    flex: 1;
+    margin-right: auto; /* Aligns the content to the right */
+    margin-bottom: 20px; /* Add some space at the bottom */
+    height: 100%;
+}
+
+.search-container {
+    background-color: #FFFFFF;
+    border-radius: 110px;
+    height: 100%;
+    padding: 89px;
+}
+
+.appointment-container {
+    background-color: #FFFFFF;
+    border-radius: 110px;
+    height: 100%;
+    padding: 89px;;
+}
+
+
+.hotels-container {
+    background-color: #FFFFFF;
+    border-radius: 110px;
+    height: 100%;
+    padding: 89px;
+}
+
+
+h2, h3 {
+    font-family: 'Playfair Display', serif;
+    color: #314D6D;
+    text-align: center;
+    margin-bottom: 30px; /* Add spacing between title and content */
+}
+
+p {
+    font-size: 1.2em;
+    margin-bottom: 30px; /* Add spacing after paragraphs */
+}
+
+/* Form Fields */
+.form-container {
+    max-width: 800px;
+    margin: 40px auto; /* Center the form */
+    padding: 20px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 20px;
+    border: 1px solid #B0C4D4; /* Light border color */
+    border-radius: 15px;
+    font-size: 1.2em;
+    margin-bottom: 30px; /* Add spacing between fields */
+    color: #314D6D;
+    background-color: #F7F4F0;
+}
+
+input:focus, textarea:focus {
+    border-color: #FF9248; /* Accent color */
+    outline: none;
+}
+
+/* Button Styles */
+button {
+    background-color: #FF9248; /* Accent color */
+    color: #F7F4F0; /* Light background */
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: auto;
+    margin-bottom: 20px;
+}
+
+button:hover {
+    background-color: #FFD87E; /* Light accent color */
+}
+
+button:focus {
+    outline: none;
+}
+
+#payment-section {
+    width: 60%;
+    margin: 25px auto 0;
+}
+
+/* Footer */
+footer {
+    position: relative;
+    background-color: #314D6D; /* Main color */
+    color: #F7F4F0; /* Light background */
+    padding: 30px 20px;
+    text-align: center;
+    font-size: 1em;
+}
+
+footer p {
+    font-size: 1.1em;
+    margin: 0;
+}
+
+/* Links */
+a {
+    color: #314D6D; /* Main color */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #FF9248; /* Accent color */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+    }
+
+    .navbar {
+        width: 100%;
+        position: relative;
+        height: auto;
+        padding: 10px;
+    }
+
+    .navbar a {
+        font-size: 1em;
+        margin: 10px 0;
+    }
+
+    .navbar button {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .main-content {
+        margin-left: 0;
+        padding: 20px;
+        margin-top: 70px;
+    }
+
+    h2, h3 {
+        font-size: 1.5em;
+    }
+
+    button {
+        font-size: 1em;
+        padding: 10px 15px;
+    }
+}
+
+/* Hamburger Menu for smaller screens */
+.hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+.hamburger div {
+    width: 30px;
+    height: 4px;
+    background-color: #314D6D;
+    margin: 6px 0;
+    transition: 0.4s;
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: #314D6D;
+        width: 100%;
+        height: 100%;
+    }
+
+    .navbar.active {
+        display: block;
+    }
+
+    .hamburger {
+        display: block;
+    }
+}
+
+/* Hover Effects */
+a:hover, button:hover {
+    opacity: 0.9;
+}
+
+button:focus {
+    outline: none;
+}
+
+input:focus, textarea:focus {
+    border-color: #FF9248; /* Accent color */
+    box-shadow: 0 0 10px rgba(255, 146, 72, 0.6);
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #314D6D; /* Main color */
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #FF9248; /* Accent color */
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: #FFF;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+}
+
+.close {
+    color: #000;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #FF9248;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Tooltip Styles */
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: #314D6D;
+    color: #FFF;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Card Styles */
+.card {
+    background-color: #FFF;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.card-body {
+    font-size: 1.1em;
+}
+
+.card-footer {
+    text-align: right;
+    margin-top: 20px;
+}
+
+/* Table Styles */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+}
+
+.table th, .table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.table th {
+    background-color: #314D6D;
+    color: #fff;
+}
+
+.table tr:hover {
+    background-color: #f1f1f1;
+}

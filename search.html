@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Medical Services</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        const mockCenters = [
+            { name: "Arabkir Medical Center", location: "Yerevan", specialty: "Pediatrics" },
+            { name: "Erebouni Medical Center", location: "Yerevan", specialty: "Cardiology" },
+            { name: "Gyumri Medical Center", location: "Gyumri", specialty: "Orthopedics" },
+            { name: "Vanadzor Health Clinic", location: "Vanadzor", specialty: "Dermatology" },
+            { name: "Armenian General Hospital", location: "Yerevan", specialty: "Neurology" },
+        ];
+
+        // Search Functionality
+        function performSearch() {
+            const serviceName = document.getElementById("serviceName").value.toLowerCase();
+            const location = document.getElementById("location").value;
+            const specialty = document.getElementById("specialty").value;
+
+            const resultsContainer = document.querySelector(".search-results");
+            const filteredCenters = mockCenters.filter(center => {
+                return (
+                    (!serviceName || center.name.toLowerCase().includes(serviceName)) &&
+                    (!location || center.location === location) &&
+                    (!specialty || center.specialty === specialty)
+                );
+            });
+
+            resultsContainer.innerHTML = filteredCenters.length
+                ? filteredCenters.map(center => `
+                    <div class="result-item">
+                        <h3>${center.name}</h3>
+                        <p>Location: ${center.location}</p>
+                        <p>Specialty: ${center.specialty}</p>
+                        <button onclick="viewDetails('${center.name}', '${center.location}', '${center.specialty}')">
+                            View Details
+                        </button>
+                    </div>
+                `).join("")
+                : "<p>No results found for your search criteria.</p>";
+        }
+
+        // Redirect to View Doctors Page
+        function viewDetails(centerName, location, specialty) {
+            const queryParams = new URLSearchParams({
+                name: centerName,
+                location: location,
+                specialty: specialty,
+            }).toString();
+            window.location.href = `view_doctors.html?${queryParams}`;
+        }
+    </script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">Health Dashboard</div>
+    </header>
+    <div class="layout">
+        <!-- Sidebar Navigation -->
+        <nav class="navbar">
+            <h2>HealMount</h2>
+            <ul>
+                <li><a href="appointments.html">Book Appointment</a></li>
+                <li><a href="my_bookings.html">My Bookings</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="search.html">Search Medical Services</a></li>
+                <li><a href="logout.html">Logout</a></li>
+                <li><a href="hotels.html">Hotels and Taxi</a></li>
+                <li><a href="reviews.html">Reviews and Ratings</a></li>
+              </ul>
+        </nav>
+
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="search-container container">
+                <h2>Search Medical Services in Armenia</h2>
+                <form class="search-form">
+                    <input type="text" placeholder="Search by service name" id="serviceName">
+                    <select id="location">
+                        <option value="">Select Location</option>
+                        <option value="Yerevan">Yerevan</option>
+                        <option value="Gyumri">Gyumri</option>
+                        <option value="Vanadzor">Vanadzor</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <select id="specialty">
+                        <option value="">Select Specialty</option>
+                        <option value="Cardiology">Cardiology</option>
+                        <option value="Dermatology">Dermatology</option>
+                        <option value="Orthopedics">Orthopedics</option>
+                        <option value="Pediatrics">Pediatrics</option>
+                        <option value="Neurology">Neurology</option>
+                    </select>
+                    <button type="button" onclick="performSearch()">Search</button>
+                </form>
+                <div class="search-results">
+                    <!-- Dynamic results will be populated here -->
+                </div>
+            </div>
+        </main>
+    </div>
+     <!-- Footer -->
+     <footer class="footer">
+        <p>&copy; 2024 HealMount. All rights reserved.</p>
+    </footer>
+</body>
+</html>

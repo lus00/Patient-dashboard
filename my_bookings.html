@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manage Bookings</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+   <!-- Header -->
+   <header class="header">
+    <div class="logo">Health Dashboard</div>
+    
+</header>
+
+<div class="navbar">
+
+  <h2>HealMount</h2>
+    <nav>
+      <ul>
+        <li><a href="appointments.html">Book Appointment</a></li>
+        <li><a href="my_bookings.html">My Bookings</a></li>
+        <li><a href="profile.html">Profile</a> <li>
+        <li><a href="search.html">Search Medical Services</a> <li>
+        <li><a href="logout.html">Logout</a></li>
+        <li><a href="hotels.html">Hotels and Taxi</a></li>
+        <li><a href="reviews.html">Reviews and Ratings</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="main-content"> 
+    <h1>My Bookings</h1>
+    <div id="bookings-container">Loading...</div> 
+
+    <!-- Edit Booking Modal -->
+    <div id="edit-modal" class="hidden modal">
+      <div class="modal-content">
+        <span id="close-modal">&times;</span>
+        <h2>Edit Booking</h2>
+        <form id="edit-form">
+          <label for="edit-date">New Date:</label>
+          <input type="date" id="edit-date" required />
+
+          <label for="edit-time">New Time:</label>
+          <input type="time" id="edit-time" required />
+
+          <button type="submit">Update Booking</button>
+        </form>
+      </div>
+    </div>
+  </div>
+ 
+ 
+
+  <script src="scripts.js"></script>
+
+   
+</body>
+
+</html>

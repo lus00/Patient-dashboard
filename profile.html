@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Management</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="scripts.js" defer></script>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">Health Dashboard</div>
+    </header>
+
+    <div class="layout">
+        <!-- Sidebar Navigation -->
+        <nav class="navbar">
+            <h2>HealMount</h2>
+            <ul>
+                <li><a href="appointments.html">Book Appointment</a></li>
+                <li><a href="my_bookings.html">My Bookings</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="search.html">Search Medical Services</a></li>
+                <li><a href="logout.html">Logout</a></li>
+                <li><a href="hotels.html">Hotels and Taxi</a></li>
+                <li><a href="reviews.html">Reviews and Ratings</a></li>
+              </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="form-container">
+                <h2>Profile Management</h2>
+
+                <!-- Profile View Section -->
+                <div id="profile-view">
+                    <p><strong>Full Name:</strong> <span id="view-name">John Doe</span></p>
+                    <p><strong>Email:</strong> <span id="view-email">john.doe@example.com</span></p>
+                    <p><strong>Phone:</strong> <span id="view-phone">+1-234-567-890</span></p>
+                    <div class="upload-section">
+                        <p><strong>Uploaded Documents:</strong></p>
+                        <p>No documents uploaded</p>
+                        <button onclick="toggleEdit()">Edit Profile</button>
+                    </div>
+                </div>
+
+                <!-- Profile Edit Section -->
+                <div id="profile-edit" style="display: none;">
+                    <form>
+                        <input type="text" id="edit-name" placeholder="Enter Full Name">
+                        <input type="email" id="edit-email" placeholder="Enter Email">
+                        <input type="tel" id="edit-phone" placeholder="Enter Phone Number">
+                        <div class="upload-section">
+                            <label for="upload-docs">Upload Documents:</label>
+                            <input type="file" id="upload-docs" multiple>
+                        </div>
+                        <button type="button" onclick="saveProfile()">Save Changes</button>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 HealMount. All rights reserved.</p>
+    </footer>
+
+</body>
+
+</html>

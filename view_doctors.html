@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Doctor Profiles</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        const doctors = [
+            { name: "Dr. Anna Khachatryan", specialty: "Pediatrics", hospital: "Arabkir Medical Center", rank: 4.8, photo: "anna.jpg" },
+            { name: "Dr. Vahagn Petrosyan", specialty: "Cardiology", hospital: "Erebouni Medical Center", rank: 4.5, photo: "vahagn.jpg" },
+            { name: "Dr. Aram Sargsyan", specialty: "Orthopedics", hospital: "Gyumri Medical Center", rank: 4.2, photo: "aram.jpg" },
+            { name: "Dr. Mariam Hakobyan", specialty: "Neurology", hospital: "Arabkir Medical Center", rank: 4.7, photo: "mariam.jpg" },
+            { name: "Dr. Karen Avagyan", specialty: "General Surgery", hospital: "Erebouni Medical Center", rank: 4.6, photo: "karen.jpg" },
+            { name: "Dr. Lilit Grigoryan", specialty: "Dermatology", hospital: "Gyumri Medical Center", rank: 4.4, photo: "lilit.jpg" },
+        ];
+
+        window.onload = function () {
+            const params = new URLSearchParams(window.location.search);
+            const hospitalName = params.get("name");
+            const resultsContainer = document.querySelector('.doctor-results');
+            const filteredDoctors = doctors.filter(doc => doc.hospital === hospitalName);
+
+            resultsContainer.innerHTML = filteredDoctors.length
+                ? filteredDoctors.map(doc => `
+                    <div class="doctor-item">
+                        <img src="images/${doc.photo}" alt="${doc.name}" class="doctor-photo">
+                        <h3>${doc.name}</h3>
+                        <p>Specialty: ${doc.specialty}</p>
+                        <p>Rank: ${doc.rank} ⭐</p>
+                        <button onclick="redirectToTexting('${doc.name}')">Text</button>
+                        <button onclick="redirectToBooking('${doc.name}')">Book Appointment</button>
+                    </div>
+                `).join('')
+                : `<p>No doctors found for ${hospitalName}</p>`;
+        };
+
+        function redirectToTexting(doctorName) {
+            window.location.href = `text_doctor.html?doctor=${encodeURIComponent(doctorName)}`;
+        }
+
+        function redirectToBooking(doctorName) {
+            window.location.href = `
+            
+            
+            
+            appointments.html?doctor=${encodeURIComponent(doctorName)}`;
+        }
+    </script>
+</head>
+<body>
+     <!-- Header -->
+     <header class="header">
+        <div class="logo">Health Dashboard</div>
+        
+    </header>
+    <div class="layout">
+        <!-- Sidebar -->
+        <nav class="navbar">
+            <h2>HealMount</h2>
+            <ul>
+                <li><a href="appointments.html">Book Appointment</a></li>
+                <li><a href="my_bookings.html">My Bookings</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="search.html">Search Medical Services</a></li>
+                <li><a href="logout.html">Logout</a></li>
+                <li><a href="hotels.html">Hotels and Taxi</a></li>
+                <li><a href="reviews.html">Reviews and Ratings</a></li>
+              </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="doctor-container">
+                <h2>Doctors at Selected Hospital</h2>
+                <div class="doctor-results">
+                    <!-- Dynamic doctor data will be populated here -->
+                </div>
+            </div>
+        </main>
+    </div>
+
+      <!-- Footer -->
+   <footer class="footer">
+    <p>&copy; 2024 HealMount. All rights reserved.</p>
+</footer>
+    
+</body>
+</html>

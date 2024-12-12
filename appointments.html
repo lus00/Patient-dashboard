@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book an Appointment</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link
+    href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css"
+    rel="stylesheet"
+  />
+</head>
+
+<body>
+     <!-- Header -->
+     <header class="header">
+        <div class="logo">Health Dashboard</div>
+    </header>
+  <!-- Sidebar -->
+  <div class="navbar">
+    <h2>HealMount</h2>
+            <nav>
+              <ul>
+                <li><a href="appointments.html">Book Appointment</a></li>
+                <li><a href="my_bookings.html">My Bookings</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="search.html">Search Medical Services</a></li>
+                <li><a href="logout.html">Logout</a></li>
+                <li><a href="hotels.html">Hotels and Taxi</a></li>
+                <li><a href="reviews.html">Reviews and Ratings</a></li>
+              </ul>
+            </nav>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <div class="appointment-container container">
+      <h1>Book an Appointment</h1>
+      <!-- Calendar -->
+      <div id="calendar-container">
+        <div id="calendar"></div>
+      </div>
+
+      <!-- Payment Section -->
+      <div id="payment-section" class="hidden">
+        <h2>Booking Details</h2>
+        <p id="selected-date-display"></p>
+
+        <label for="time-selector">Select Time:</label>
+        <select id="time-selector">
+          <option value="">Select a time</option>
+          <option value="09:00 AM">09:00 AM</option>
+          <option value="10:00 AM">10:00 AM</option>
+          <option value="11:00 AM">11:00 AM</option>
+          <option value="01:00 PM">01:00 PM</option>
+          <option value="02:00 PM">02:00 PM</option>
+          <option value="03:00 PM">03:00 PM</option>
+        </select>
+
+        <h2>Payment Details</h2>
+        <form id="payment-form">
+          <label for="payment-amount">Payment Amount ($):</label>
+          <input type="number" id="payment-amount" placeholder="Enter amount" min="0" required />
+
+          <label for="card-number">Card Number:</label>
+          <input type="text" id="card-number" placeholder="1234 5678 9876 5432" required />
+
+          <label for="expiry-date">Expiry Date:</label>
+          <input type="text" id="expiry-date" placeholder="MM/YY" required />
+
+          <label for="cvv">CVV:</label>
+          <input type="text" id="cvv" placeholder="123" required />
+
+          <button type="submit">Pay & Book Now</button>
+        </form>
+      </div>
+    </div>
+  </div>
+   <!-- Footer -->
+   <footer class="footer">
+    <p>&copy; 2024 HealMount. All rights reserved.</p>
+</footer>
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+  <script src="scripts.js"></script>
+</body>
+
+</html>

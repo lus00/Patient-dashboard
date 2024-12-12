@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hotel & Taxi Booking System</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">Health Dashboard</div>
+    </header>
+
+  <!-- Sidebar Navigation -->
+
+  <nav class="navbar">
+
+    <h2>HealMount</h2>
+    <ul>
+        <li><a href="appointments.html">Book Appointment</a></li>
+        <li><a href="my_bookings.html">My Bookings</a></li>
+        <li><a href="profile.html">Profile</a></li>
+        <li><a href="search.html">Search Medical Services</a></li>
+        <li><a href="logout.html">Logout</a></li>
+        <li><a href="hotels.html">Hotels and Taxi</a></li>
+        <li><a href="reviews.html">Reviews and Ratings</a></li>
+      </ul>
+  </nav>
+<div class="main-content">
+  <div class="hotels-container container">
+    <div>
+        <h3>Search for Hotels</h3>
+        <input type="text" id="hotelDestination" placeholder="Enter destination city">
+        <button onclick="searchHotels(document.getElementById('hotelDestination').value)">Search Hotels</button>
+        <div id="hotelResults"></div>
+      </div>
+      
+      <div>
+        <h3>Search for Taxis</h3>
+        <input type="text" id="taxiLocation" placeholder="Enter pickup location">
+        <button onclick="searchTaxis(document.getElementById('taxiLocation').value)">Search Taxis</button>
+        <div id="taxiResults"></div>
+      </div>
+      
+      <div>
+        <h3>Payment Details</h3>
+        <input type="text" id="cardNumber" placeholder="Card Number">
+        <input type="text" id="cardHolder" placeholder="Card Holder Name">
+        <input type="text" id="expiry" placeholder="MM/YY">
+        <input type="text" id="cvv" placeholder="CVV">
+        <button onclick="makePayment()">Pay Now</button>
+      </div>
+      
+      <div>
+        <h3>My Bookings</h3>
+        <div id="myBookings"></div>
+      </div>
+      
+      <p>Total Amount Due: $<span id="totalAmount">0</span></p>
+  </div>
+</div>
+
+       <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 HealMount. All rights reserved.</p>
+    </footer>
+      
+
+  <script src="scripts.js"></script>
+</body>
+
+</html>
